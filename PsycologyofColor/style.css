@@ -1,0 +1,152 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: hsl(0, 0%, 0%);
+}
+
+#graphlabels { 
+position: absolute;
+width: 99%;
+height: 99%;
+z-index: -1; 
+left: 615px;
+top: -2%;
+}
+
+/*hues of you title pic */
+#intro .image-container { 
+  width: 760px; 
+  height: 340px; 
+  overflow: hidden;
+  position: absolute;
+  z-index: -1; 
+  top: -5%;
+  left: -35px;
+}
+
+/*hues of you title pic */
+#intro img { 
+  width: 100%; 
+  height: auto; 
+  object-fit: cover;
+}
+
+#customTextContainer {
+  margin: 20px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  font-size: 18px;
+  color: #c8c4c4;
+  top: 28%;
+  position: absolute;
+  width: 560px; 
+  height: 300px; 
+  left: 85px;
+  text-align: center;
+}
+
+
+
+div.tooltip {
+  position: absolute;
+  width: 20ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 12px;
+  background: WhiteSmoke;
+  border: 0px;
+  border-radius: 20px;
+  padding: 10px;
+  margin-left: 8px;
+  pointer-events: none;
+}
+
+
+.bubble {
+  stroke: white;
+  stroke-width: 0.5px;
+}
+
+.bubble:hover {
+  stroke: rgb(255, 255, 255);
+  stroke-width: 2px;
+}
+  
+#carousel-container {
+  position: absolute;
+  top:55%;
+  left: 120px;
+  width: 505px; /* Adjust width as needed */
+  height: 35%;
+  background-color: rgba(240, 240, 240, 0.065);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  padding-bottom: 1%;
+}
+
+.carousel-slide {
+  display: block;
+  padding: 50px;
+  font-family: "Cormorant Garamond", serif;
+  color: blue;
+}
+
+.carousel-indicators {
+  display: none;
+}
+
+#info-tooltip-container {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+}
+
+.info-icon {
+  position: absolute;
+  top: 30px;
+  left: 1700px;
+  cursor: pointer;
+  font-size: 50px; 
+  color: #6f6f6f;
+}
+
+.info-tooltip {
+  position: absolute;
+  background-color: #a39d9d;
+  padding: 10px;
+  opacity: 0; /* Start with 0 opacity */
+  transition: opacity 0.2s;
+  z-index: 1001;
+  left: 1000px;
+  top: 50px;
+}
+
+
+/* ///////////////////////////////////////REMOVED FEATURED AND FILTERS/////////////////////////////////////////*/
+#allBoxes input[type="checkbox"], #allBoxes label {
+  color: rgba(0, 0, 0, 0);
+}
+
+/* Optional: If you want to style the labels differently */
+#allBoxes label {
+  font-weight: lighter; /* Example: Make labels bold */
+}
+
+#total {
+  font-family: "Cormorant Garamond", serif;
+  text-align: left;
+  left: 1500px;
+  position: absolute;
+  top: 425px;
+  padding: 0;
+  padding-top: -2000px;
+  font-size: 18px;
+  color: hsl(0, 0%, 78%);
+}
+

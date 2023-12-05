@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hues of You</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        crossorigin="anonymous">
+
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="customTextContainer">
+        <p>
+            Colors have also a strong impact on our emotions and feelings <span style="font-size: smaller;">(Hemphill,
+                1996;
+                Lang, 1993; Mahnke, 1996)</span>.
+            For
+            instance, the color <span style="color: rgb(202, 7, 7);">red</span> has been associated with excitement,
+            orange as
+            distressing and
+            upsetting, <span style="color: rgb(239, 213, 46);">yellow</span> as cheerful, and <span
+                style="color: rgb(67, 67, 232);">blue</span> has been associated with comfort and security <span
+                style="font-size: smaller;">(Ballast,
+                2002;
+                1982).</span>.
+            <br>
+            <br>
+            Explore NGA's art collection through your own emotions.
+        <p>
+    </div>
+
+    <div id="graph" class="graph-container"></div>
+    <div id="intro">
+        <div class="image-container">
+            <img src="title.svg" alt="Your Title" />
+        </div>
+    </div>
+    <div id="graphlabels">
+        <div class="labels">
+            <img src="LABELS.svg" alt="LABELS" />
+        </div>
+    </div>
+    <div id="carousel-container" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active" id="slice-1" data-bs-slide-to="0">
+                <h2 style="color:white; font-size: 30px; text-align: center;">Tired
+                </h2>
+                <p style="color:white; font-size: 15px; text-align: left; line-height: 3;">The color purple is often
+                    associated with feelings of tiredness relaxation, and even mourning. The hue's long wavelength light
+                    can trigger the release
+                    of melatonin, a sleep hormone, inducing tiredness. Purple's calming and relaxing properties
+                    promote rest and rejuvenation. How do these arttworks make you feel?</p>
+            </div>
+            <div id="slice-2" class="carousel-item" data-bs-slide-to="1">
+                <h2 style="color:white; font-size: 30px; text-align: center;">Loved
+                </h2>
+                <p style="color:white; font-size: 15px; text-align: left; line-height: 3;">The combination of purple
+                    and red,
+                    particularly in darker tones, is associated with feelings of love
+                    Explore how the use of purple/red tones in art contributes to your emotional response
+                    and associations with love.
+                </p>
+            </div>
+
+            <div id="slice-3" class="carousel-item" data-bs-slide-to="2">
+                <h2 style="color:white; font-size: 30px; text-align: center;">Angry</h2>
+                <p style="color:white; font-size: 15px; text-align: left; line-height: 3;">Red is a color that
+                    commands attention and is
+                    often linked to strong emotions. The
+                    physiological effects of red, such as increased heart rate and elevated blood pressure, contribute
+                    to
+                    its association with anger. How might artworks predominantly featuring the color red evoke or
+                    amplify
+                    feelings of anger for you?</p>
+            </div>
+
+            <div id="slice-4" class="carousel-item" data-bs-slide-to="3">
+                <h2 style="color:white; font-size: 30px; text-align: center;">Energetic
+                </h2>
+                <p style="color:white; font-size: 15px; text-align: left; line-height: 3;">The combination of red and
+                    yellow creates a visually stimulating and high-energy palette, conveying
+                    liveliness and enthusiasm. Are
+                    there
+                    particular subject matters or styles that enhance the sense of dynamism for you?</p>
+            </div>
+
+            <div id="slice-5" class="carousel-item" data-bs-slide-to="4">
+                <h2 style="color:white; font-size: 30px; text-align: center;">Happy</h2>
+                <p style="color:white; font-size: 15px; text-align: left; line-height: 3;">Yellow is the color of
+                    sunshine, conveying
+                    warmth and cheerfulness,
+                    generating a sense of happiness and positivity. How does viewing art with a predominant yellow hue
+                    impact your mood and evoke feelings of happiness? </p>
+            </div>
+
+            <div id="slice-6" class="carousel-item" data-bs-slide-to="5">
+                <h2 style="color:white; font-size: 30px; text-align: center;">Disgusted</h2>
+                <p style="color:white; font-size: 15px; text-align: left; line-height: 3;">The association of
+                    yellow/green with feelings
+                    of disgust might stem from cultural or personal
+                    experiences. Certain shades of yellow and green, when combined, can evoke an uneasy or unpleasant
+                    feeling. Are there specific visual elements that
+                    contribute to or alleviate this emotional response?</p>
+            </div>
+
+            <div id="slice-7" class="carousel-item" data-bs-slide-to="6">
+                <h2 style="color:white; font-size: 30px; text-align: center;">Comfortable</h2>
+                <p style="color:white; font-size: 15px; text-align: left; line-height: 3;">Green, being prevalent in
+                    nature, is often
+                    associated with feelings of comfort and tranquility. How
+                    does
+                    the color green in art contribute to your sense of comfort and well-being? Are there specific
+                    artistic
+                    techniques that enhance or alter this emotional connection?</p>
+            </div>
+
+            <div id="slice-8" class="carousel-item" data-bs-slide-to="7">
+                <h2 style="color:white; font-size: 30px; text-align: center;">Excited</h2>
+                <p style="color:white; font-size: 15px; text-align: left; line-height: 3;">The pairing of green and
+                    blue evokes a sense
+                    of excitement and vibrancy.Are there specific visual motifs
+                    or
+                    compositions that enhance this emotional response?</p>
+            </div>
+
+            <div id="slice-8" class="carousel-item" data-bs-slide-to="7">
+                <h2 style="color:white; font-size: 30px; text-align: center;">Calm</h2>
+                <p style="color:white; font-size: 15px; text-align: left; line-height: 3;">Blue is renowned for its
+                    calming effects on the mind and body. How does viewing art predominantly in shades of blue impact
+                    your sense of calm and potentially introduce elements of melancholy?</p>
+            </div>
+
+            <div id=" slice-10" class="carousel-item" data-bs-slide-to="9">
+                <h2 style="color:white; font-size: 30px; text-align: center;">Depressed</h2>
+                <p style="color:white; font-size: 15px; text-align: left; line-height: 3;">The combination of blue and
+                    purple,
+                    especially in darker tones, can evoke feelings of sadness and
+                    depression. When confronted with art featuring blue/purple tones, do you sense feelings of sadness
+                    or
+                    depression, and how do these emotional responses manifest?</p>
+            </div>
+
+        </div>
+
+        <button class=" carousel-control-prev" type="button" data-bs-target="#carousel-container" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel-container" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="logic.js"></script>
+
+
+    <div id="allBoxes">
+        <input type="checkbox" class="checkbox" value="Ancient Art" checked /><label>Ancient Art
+            <i>(500-1200)</i></label>
+        <br />
+        <input type="checkbox" class="checkbox" value="Medieval-Gothic" checked /><label>Medieval Gothic
+            <i>(1200-1430)</i></label>
+        <br />
+        <input type="checkbox" class="checkbox" value="Italian-Renaissance" checked /><label>Italian Renaissance
+            <i>(1430-1510)</i></label>
+        <br />
+        <input type="checkbox" class="checkbox" value="Northern-Renaissance" checked /><label>Northern Renaissance
+            <i>(1510-1550)</i></label>
+        <br />
+        <input type="checkbox" class="checkbox" value="Mannerism" checked /><label>Mannerism
+            <i>(1550-1600)</i></label>
+        <br />
+        <input type="checkbox" class="checkbox" value="Baroque" checked /><label>Baroque <i>(1600-1705)</i></label>
+        <br />
+        <input type="checkbox" class="checkbox" value="Rococo" checked /><label>Rococo <i>(1705-1750)</i></label>
+        <br />
+        <input type="checkbox" class="checkbox" value="Neoclassicism" checked /><label>Neoclassicism
+            <i>(1750-1805)</i></label>
+        <br />
+        <input type="checkbox" class="checkbox" value="Romanticism" checked /><label>Romanticism
+            <i>(1805-1850)</i></label>
+        <br />
+        <input type="checkbox" class="checkbox" value="Realism" checked /><label>Realism <i>(1850-1899)</i></label>
+        <br />
+        <input type="checkbox" class="checkbox" value="Modernism" checked /><label>Modern Art
+            <i>(1899-1960)</i></label>
+        <br />
+        <input type="checkbox" class="checkbox" value="Contemporary" checked /><label>Contemporary Art
+            <i>(1960-2023)</i></label>
+    </div>
+    <!-- 
+    <div id="total">
+        <p></span> Painting Count: <span id="count"></span>
+    </div> -->
+</body>
+
+<div id="info-tooltip-container">
+    <div id="info-tooltip-content">
+        Hover over color wheel slices to see emotional color connections.
+    </div>
+</div>
+
+
+</html>

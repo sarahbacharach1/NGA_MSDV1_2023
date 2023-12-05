@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Include D3.js and D3-scale-chromatic for data visualization -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+
+    <style>
+        /* Define CSS styles for the HTML elements */
+        body {
+            font-family: "Trirong", serif;
+            background-color: rgb(239, 223, 198);
+            color: #C3BBA7;
+        }
+
+        .bubbles {
+            fill: #E3A24B;
+        }
+
+        .axis {
+            font: 14px;
+            stroke: #984629;
+        }
+
+        .axis path,
+        .axis line {
+            fill: #984629ff;
+            stroke-width: 1px;
+            shape-rendering: crispEdges;
+        }
+
+        .axis text {
+            fill: #984629ff;
+        }
+
+        .toolTip {
+            position: absolute;
+            display: none;
+            min-width: 80px;
+            height: auto;
+            background: none repeat scroll 0 0 #cac4c4;
+            border: 1px solid #ffffff;
+            padding: 14px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="my_dataviz"></div>
+
+    <script>
+        // Define margin, width, and height for the chart
+        var margin = { top: 60, right: 90, bottom: 150, left: 120 },
+            width = 875 - margin.left - margin.right,
+            height = 680 - margin.top - margin.bottom;
+
+        // Define a vertical offset for the chart
+        var yOffset = 150;
+
+        // Select the "my_dataviz" div and create an SVG element inside it
+        var svg = d3.select("#my_dataviz")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right + 670)
+            .attr("height", height + margin.top + margin.bottom + 300)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + (margin.top + yOffset) + ")");
+
+        svg.append("text")
+            .attr("x", width - 745)
+            .attr("y", -margin.top / 2 - 60)
+            .attr("text-anchor", "left")
+            .style("font-size", "24px") // Set the font size for the rest of the text
+            .style("font-weight", "bold")
+            .style("fill", "#984629ff")
+            .text("Does ");
+
+        // Append the word "Size" with a larger font size
+        svg.append("text")
+            .attr("x", width - 745 + 76) // Adjust the x position to move it to the right
+            .attr("y", -margin.top / 2 - 60)
+            .attr("text-anchor", "left")
+            .style("font-size", "74px") // Set the font size for "Size"
+            .style("font-weight", "bold")
+            .style("fill", "#984629ff")
+            .text("Size");
+
+        // Append the rest of the text with the default font size
+        svg.append("text")
+            .attr("x", width - 745 + 240) // Adjust the x position to move it to the right
+            .attr("y", -margin.top / 2 - 60)
+            .attr("text-anchor", "left")
+            .style("font-size", "24px") // Set the font size for the rest of the text
+            .style("font-weight", "bold")
+            .style("fill", "#984629ff")
+            .text(" Matter?");
+
+        // Append the second line of text
+        svg.append("text")
+            .attr("x", width - 745)
+            .attr("y", -margin.top / 2 - 30)
+            .attr("text-anchor", "left")
+            .style("font-size", "18px")
+            .style("fill", "#984629ff")
+            .text("Exploring the NGA archives and its relationship with the golden ratio");
+
+        // Create a background rectangle behind text
+        var textBox = svg.append("rect")
+            .attr("x", width - 745) // Adjust the x-position to place the box next to the graph
+            .attr("y", 565) // Adjust the y-position to align the box vertically
+            .attr("width", 1490) // Set the width of the box
+            .attr("height", 170) // Set the height of the box
+            .attr("fill", "#94B799ff"); // Set the fill color
+
+        // Define the position and size of the SVG image
+        var imageX = width - 230; // Adjust the x position
+        var imageY = 16; // Adjust the y position
+        var imageWidth = 1300; // Set the width of the image
+        var imageHeight = 1300; // Set the height of the image
+
+        // Add an SVG image
+        svg.append("image")
+            .attr("xlink:href", "ratio.svg") // Replace "ratio.svg" with the actual path to your SVG image
+            .attr("x", imageX)
+            .attr("y", imageY)
+            .attr("width", imageWidth)
+            .attr("height", imageHeight);
+
+        // Add a foreignObject element within the  box to contain the wrapped text
+        var foreignObject = svg.append("foreignObject")
+            .attr("x", width - 720) // Adjust the x-position to place the text inside the box
+            .attr("y", 592) // Adjust the y-position to align the text vertically
+            .attr("width", 350) // Adjust the width to fit inside the box
+            .attr("height", 420); // Adjust the height to fit inside the box
+
+        // Add a div element within the foreignObject for HTML content (the wrapped text)
+        var div = foreignObject.append("xhtml:div")
+            .style("font-size", "16px")
+            .style("font-weight", "800")
+            .style("color", "#984629")
+            .style("text-align", "left")
+            .html("The Golden Ratio: art and nature's secret for perfect proportions. Witness how this divine ratio has created captivating visual harmony for centuries.");
+
+        // Add a foreignObject element within the  box to contain the wrapped text
+        var foreignObject = svg.append("foreignObject")
+            .attr("x", width + 80) // Adjust the x-position to place the text inside the box
+            .attr("y", 570) // Adjust the y-position to align the text vertically
+            .attr("width", 350) // Adjust the width to fit inside the box
+            .attr("height", 420); // Adjust the height to fit inside the box
+
+        // Add a div element within the foreignObject for HTML content (the wrapped text)
+        var div = foreignObject.append("xhtml:div")
+            .style("font-size", "16px")
+            .style("font-weight", "1000")
+            .style("color", "#984629")
+            .style("text-align", "left")
+            .html("Aspect Ratio Proportions:");
+
+        // add border box around graph 
+        var borderRectWidth = width + margin.left + margin.right + 620;
+        var borderRectHeight = height + margin.top + margin.bottom - 100;
+        var borderRadius = 10; // Adjust the radius as needed
+
+        svg.append("rect")
+            .attr("x", -margin.left + 38)
+            .attr("y", -margin.top + 25)
+            .attr("width", borderRectWidth)
+            .attr("height", borderRectHeight)
+            .attr("rx", borderRadius) // Set the x-axis border radius
+            .attr("ry", borderRadius) // Set the y-axis border radius
+            .style("fill", "none") // Remove the fill color
+            .style("stroke", "#984629ff") // Set the border color
+            .style("stroke-width", "3px"); // Set the border width
+
+        // Load data from a CSV file and process it
+        d3.csv("paintings.csv", function (data) {
+            data = data.filter(function (d) {
+                return d.Ratio <= 1.99;
+            });
+
+
+            // Create a linear scale for the y-axis (used for width)
+            var y = d3.scaleLog()
+                .domain([1, 2000])
+                .range([height, 0])
+                .nice();
+
+
+            // Add the y-axis label
+            svg.append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("x", height / 2)
+                .attr("y", -margin.left + 30)
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style("fill", "black")
+                .text("Width");
+
+            // Create a linear scale for the x-axis (used for dimension)
+            var x = d3.scaleLinear()
+                .domain([0, 2])
+                .range([0, 2 * width])
+                .nice();
+
+
+            // Add the x-axis label
+            svg.append("text")
+                .attr("x", (2.0 * width) / 2)
+                .attr("y", height + margin.bottom - 100)
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style("dy", "3.5em")
+                .style("fill", "#984629ff")
+                .text("Dimension (Height/Width)");
+
+
+            var z = d3.scaleLinear()
+                .domain([d3.min(data, function (d) { return d.Height; }), d3.max(data, function (d) { return d.Height; })])
+                .range([2, 20]);
+
+            // Create and style the x-axis
+            svg.append("g")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(x))
+                .selectAll(".tick text")
+                .style("fill", "#984629ff");
+
+
+            // Create a linear scale for circle sizes
+            // var z = d3.scaleLinear()
+            //     .domain([200000, 1310000000])
+            //     .range([2, 10]);
+
+            // Define a color scale
+            var myColor = d3.scaleOrdinal()
+                .range(d3.schemeSet2);
+
+            // Create a tooltip for data points
+            var tooltip = d3.select("#my_dataviz")
+                .append("div")
+                .style("opacity", 0)
+                .attr("class", "tooltip")
+                .style("background-color", "none")
+                .style("border-radius", "5px")
+                .style("padding", "10px")
+                .style("color", "#984629ff")
+                .style("text-align", "center")
+                .style("position", "absolute")
+                .style("min-width", "80px")
+                .style("height", "auto")
+                .style("border", "white")
+                .style("background", "white")
+                .style("padding", "14px");
+
+            // Define functions for showing, moving, and hiding tooltips
+            var showTooltip = function (d) {
+                tooltip
+                    .transition()
+                    .duration(200);
+                tooltip
+                    .style("opacity", 1)
+                    .html("Objectid: " + d.Objectid + "<br>" + "Width:" + d.Width + "<br>" + "Ratio:" + d.Ratio + "<br>" + "Height:" + d.Height + "<br>" + "Year:" + d.Year)
+                    .style("top", (d3.mouse(this)[1] + 30) + "px");
+            };
+
+            var moveTooltip = function (d) {
+                tooltip
+                    .style("left", (d3.mouse(this)[0] + 30) + "px")
+                    .style("top", (d3.mouse(this)[1] + 30) + "px");
+            };
+
+            var hideTooltip = function (d) {
+                tooltip
+                    .transition()
+                    .duration(200)
+                    .style("opacity", 0);
+            };
+
+            // Create lines and labels on the x-axis
+            var xLines = [0.5, 0.6, 0.7, 1.0, 1.3, 1.4, 1.5];
+            var xLabels = ["1x2", "Golden Ratio", "3x4", "Square", "4x3", "Golden Ratio", "2x1"];
+
+            // Define colors
+            var goldColor = "#c98f3c";
+            var darkGreyColor = "#4f4c43";
+
+            // Create lines and labels on the x-axis
+            for (var i = 0; i < xLines.length; i++) {
+                var color = xLabels[i] === "Golden Ratio" ? goldColor : darkGreyColor;
+                var dashArray = "5";
+
+                svg.append("line")
+                    .attr("x1", x(xLines[i]))
+                    .attr("x2", x(xLines[i]))
+                    .attr("y1", y(4000))
+                    .attr("y2", y(1))
+                    .attr("stroke", color)
+                    .attr("stroke-dasharray", dashArray);
+
+                svg.append("text")
+                    .attr("x", x(xLines[i]))
+                    .attr("y", y(200))
+                    .attr("dy", -160)
+                    .style("font-size", "13px")
+                    .style("text-anchor", "middle")
+                    .style("font-weight", "bold")
+                    .style("fill", color)
+                    .text(xLabels[i]);
+            }
+
+            // Create and style circles for the data points
+            svg.selectAll(".dot")
+                .data(data)
+                .enter()
+                .append("circle")
+                .attr("class", "bubbles")
+                .attr("cx", function (d) { return x(d.Ratio); })
+                .attr("cy", function (d) { return y(d.Width); })
+                .attr("r", 2.5)
+                .style("fill", function (d) {
+                })
+                .style("fill-opacity", 1)
+                .on("mouseover", showTooltip)
+                .on("mousemove", moveTooltip)
+                .on("mouseleave", hideTooltip);
+        });
+    </script>
+</body>
+
+</html>

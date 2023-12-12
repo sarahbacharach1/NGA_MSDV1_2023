@@ -99,7 +99,8 @@ const svg = d3
   .attr("width", width)
   .attr("height", height)
   .append("g")
-  .attr("transform", "translate(" + (width / 2 + 280) + "," + height / 2 + ")");
+  .attr("transform", "translate(" + (width / 2 + 340) + "," + (height / 2 - 50) + ")");
+
 
     
 // Create color wheel slices
@@ -120,9 +121,11 @@ for (let k = 0; k < bands; k++) {
     .append("g")
     .attr("class", "color-slice")
     .attr("transform", (d, i) => "rotate(" + (i * (360 / count) + 18) + ")");
+    
+    
 
   // Add white lines (triangles) at the beginning and end of each section
-  const lineLength = 450; // Adjust the length of the lines as needed
+  const lineLength = 500; 
 
   sliceGroup
     .append("line")
@@ -246,11 +249,11 @@ d3.json('finalImages.json').then(data => {
       updateCounts(object.group);
       updatedSortedData.push(object);
     } else if (object.date >= 1899 && object.date < 1961) {
-        object.group = "Modernism"; // Covers art from 1899 to 1960
+        object.group = "Modernism"; 
         updateCounts(object.group);
         updatedSortedData.push(object);
     } else if (object.date >= 1961 && object.date <= 2023) {
-        object.group = "Contemporary"; // Covers art from 1961 to 2023
+        object.group = "Contemporary"; 
         updateCounts(object.group);
         updatedSortedData.push(object);
       }
@@ -366,7 +369,7 @@ function buildChart(data) {
   update();
 }
 
-
+// Sync Carousel interval to Click 
 
 let isSliceClicked = false;
 
@@ -413,17 +416,16 @@ function updateCarousel(isClicked, index) {
 function resetCarousel() {
   isSliceClicked = false;
   d3.selectAll('.slice').classed("clicked", isSliceClicked);
-  // Resume the carousel
   $('#carousel-container').carousel('cycle');
 }
 
 function startCarouselInterval() {
   carouselInterval = setInterval(() => {
     // Your carousel update logic here
-  }, 30000);
+  }, 300000);
 }
 
-// Initialize carousel interval
+
 startCarouselInterval();
 
 for (let i = 0; i < count; i++) {
@@ -447,7 +449,7 @@ for (let i = 0; i < count; i++) {
     .on("mouseout", handleSliceMouseOut)
     .on("click", handleSliceClick);
 
-  // Additional click handler for toggling isSliceClicked
+  // Click handler for toggling isSliceClicked
   sliceGroup.append("path")
     .attr("d", arc)
     .attr("fill", colors[i])
@@ -472,7 +474,7 @@ function handleSliceMouseOver() {
     const endAngle = parseFloat(d3.select(this).attr("data-end-angle"));
 
     // Increase stroke width
-    d3.select(this).attr("stroke-width", 6);
+    d3.select(this).attr("stroke-width", 10);
 
     // Darken stroke color
     d3.select(this).attr("stroke", "#333"); // Adjust color as needed
@@ -490,6 +492,8 @@ function handleSliceMouseOver() {
     } 
   }
 
+  //INFO TOOLITP 
+
   const infoTooltip = d3.select("body")
   .append("div")
   .attr("class", "info-tooltip")
@@ -506,4 +510,7 @@ const infoIcon = d3.select("body")
     infoTooltip.transition().duration(200).style("opacity", 0);
   });
 
-infoTooltip.html("Click on each color to explore its emotional link. Hover over bubbles to explore each painting.")
+  infoTooltip.html("Colors have also a strong impact on our emotions and feelings. " +
+  "For instance, the color red has been associated with excitement, " +
+  "orange as distressing and upsetting, yellow as cheerful, and " +
+  "blue been associated with comfort and security. Click a color to see its emotional link.");

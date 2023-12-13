@@ -304,7 +304,7 @@ function buildChart(data) {
         .attr("stroke", "white");
 
       div.html(
-        `<b>Title:</b> ${d.title}<b> Date:</b> ${d.date} <br/><br/> <img src="${d.image}" width="100%"/>`
+        `<b> ${d.title}<b></b> ${d.date} <br/><br/> <img src="${d.image}" width="100%"/>`
       );
     })
     .on("mouseout", function(d, i) {
@@ -473,13 +473,10 @@ function handleSliceMouseOver() {
     const startAngle = parseFloat(d3.select(this).attr("data-start-angle"));
     const endAngle = parseFloat(d3.select(this).attr("data-end-angle"));
 
-    // Increase stroke width
     d3.select(this).attr("stroke-width", 10);
 
-    // Darken stroke color
-    d3.select(this).attr("stroke", "#333"); // Adjust color as needed
+    d3.select(this).attr("stroke", "#333"); 
 
-    // Filter and display data within the hovered slice
     svg.selectAll('.bubble')
       .style('display', function (d) {
         const [h] = colorConverter(d.color[0], d.color[1], d.color[2]);
@@ -513,4 +510,4 @@ const infoIcon = d3.select("body")
   infoTooltip.html("Colors have also a strong impact on our emotions and feelings. " +
   "For instance, the color red has been associated with excitement, " +
   "orange as distressing and upsetting, yellow as cheerful, and " +
-  "blue been associated with comfort and security. Click a color to see its emotional link.");
+  "blue been associated with comfort and security. Click a color to see its emotional link or scroll down to learn more.");

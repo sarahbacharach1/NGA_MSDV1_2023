@@ -3,41 +3,40 @@ body {
 }
 
 .page {
-  padding: 30px; /* Add padding between the pages */
+  padding: 30px; 
   width: fit-content;
 }
 
 #page2 {
-  background-color: #000000; /* Change the background color as needed */
-  color: white; /* Change text color as needed */
-  height: 950px; /* Adjust the height of page 2 */
+  background-color: #000000; 
+  color: white;
+  height: 950px; 
 }
 
 #labels-container {
   position: absolute;
-  left: 66.5%; /* Center the labels container horizontally */
-  transform: translateX(-50%); /* Adjust the horizontal position */
+  left: 66.5%; 
+  transform: translateX(-50%); 
   z-index: -2; 
   top: -3.5%;
 
 }
 
 #labels-svg {
-  width: 1230px; /* Set the width of the SVG container */
-  height: 1230px; /* Set the height of the SVG container */
+  width: 1230px; 
+  height: 1230px;
 }
 
 
 #carouselExampleIndicators {
-  /* Center the carousel horizontally */
   margin: 0 auto;
-  max-width: 100%; /* Adjust the maximum width as needed */
+  max-width: 100%; 
   margin-left: 100px;
 }
 
 #carouselExampleIndicators .carousel-control-prev,
 #carouselExampleIndicators .carousel-control-next {
-    width: 1%; /* Adjust the width as needed */
+    width: 1%; 
 }
 
 
@@ -63,9 +62,9 @@ body {
 
 div.tooltip {
   position: absolute;
-  width: 20ch;
+  width: 40ch;
   font-family: "Cormorant Garamond", serif;
-  font-size: 12px;
+  font-size: 18px;
   background: WhiteSmoke;
   border: 0px;
   border-radius: 20px;
@@ -132,7 +131,7 @@ div.tooltip {
   position: absolute;
   background-color: #a39d9d;
   padding: 10px;
-  opacity: 0; /* Start with 0 opacity */
+  opacity: 0; 
   transition: opacity 0.2s;
   z-index: 1001;
   left: 1300px;
@@ -144,7 +143,7 @@ div.tooltip {
 #allBoxes {
   position: absolute;
   width: 30%;
-  bottom: 250px; /* Adjust this value to move the entire list upward */
+  bottom: 250px; 
   left: 125px;
   column-count: 2; 
   column-gap: 5px; 
